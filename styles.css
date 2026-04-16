@@ -1,0 +1,140 @@
+/* ============================================
+   varmeh4868.github.io - Portfolio Stylesheet
+   Author: Vargha Mehrabian
+   Date:   04/16/2026
+   Filename: styles.css
+============================================ */
+
+/* ── Base & Background ── */
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 16px;
+   color: #e0e0e0;
+   line-height: 1.6;
+   min-height: 100vh;
+}
+
+/* ── Header ── */
+header {
+   background-color: #0f3460;
+   text-align: center;
+   padding: 40px 20px;
+   border-bottom: 3px solid #e94560;
+}
+
+header h1 {
+   font-size: 2.8em;
+   font-weight: 700;
+   color: #ffffff;
+   letter-spacing: 2px;
+}
+
+header p {
+   font-size: 1.1em;
+   color: #a0b4c8;
+   margin-top: 8px;
+}
+
+/* ── Navigation ── */
+nav {
+   background-color: #16213e;
+   padding: 12px 20px;
+   text-align: center;
+}
+
+nav ul {
+   list-style: none;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 8px;
+}
+
+nav ul li a {
+   display: inline-block;
+   text-decoration: none;
+   color: #a0b4c8;
+   font-weight: bold;
+   font-size: 0.95em;
+   padding: 8px 18px;
+   border-radius: 4px;
+   transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+   background-color: #e94560;
+   color: #ffffff;
+}
+
+/* ── Main Content ── */
+main {
+   max-width: 960px;
+   margin: 40px auto;
+   padding: 0 20px;
+}
+
+/* ── Sections ── */
+section {
+   background-color: rgba(255, 255, 255, 0.05);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   border-radius: 8px;
+   padding: 30px;
+   margin-bottom: 30px;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+section h2 {
+   font-size: 1.6em;
+   font-weight: 700;
+   color: #e94560;
+   margin-bottom: 16px;
+   border-bottom: 1px solid rgba(233, 69, 96, 0.3);
+   padding-bottom: 8px;
+}
+
+section p {
+   color: #c0ccd8;
+   margin-bottom: 12px;
+}
+
+section ul {
+   list-style: disc;
+   padding-left: 20px;
+   color: #c0ccd8;
+}
+
+section ul li {
+   margin-bottom: 6px;
+}
+
+/* ── Links ── */
+a {
+   color: #e94560;
+   text-decoration: none;
+}
+
+a:hover {
+   text-decoration: underline;
+}
+
+/* ── Footer ── */
+footer {
+   background-color: #0f3460;
+   text-align: center;
+   padding: 20px;
+   font-size: 0.85em;
+   color: #a0b4c8;
+   border-top: 3px solid #e94560;
+   margin-top: 40px;
+}
+
+footer p {
+   margin: 4px 0;
+}
