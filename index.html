@@ -3,7 +3,7 @@
   <head>
        <!--
    Author: Vargha Mehregan
-   Date:   04/24/2026
+   Date:   04/30/2026
    Filename: index.html
    -->
     <meta charset="UTF-8">
@@ -84,9 +84,25 @@
       <section id="contact">
         <header><h2>Contact</h2></header>
         <p>
-         Have a question or want to work together? Feel free to
-          <a href="mailto:varmeh4868@students.ecpi.edu">send me an email</a>.
+          Have a question or want to work together? Feel free to
+          <a href="mailto:varmeh4868@students.ecpi.edu">send me an email</a>
+          or use the form below.
         </p>
+        <form class="contact-form" action="#" method="post">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your email" required>
+
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Subject">
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message"></textarea>
+
+          <input type="submit" value="Send Message">
+        </form>
       </section>
 
     </main>

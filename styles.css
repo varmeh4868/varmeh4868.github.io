@@ -1,7 +1,7 @@
 /* ============================================
    varmeh4868.github.io - Portfolio Stylesheet
    Author: Vargha Mehregan
-   Date:   04/24/2026
+   Date:   04/30/2026
    Filename: styles.css
 ============================================ */
 /* Background and Font */
@@ -33,9 +33,7 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 10px 0;
-    display: flex;
     justify-content: center;
-    gap: 20px;
 }
  
 nav ul li a {
@@ -67,7 +65,6 @@ section {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     padding: 20px 30px;
-    margin-bottom: 30px;
     transition: transform 0.3s ease;
 }
 
@@ -150,6 +147,57 @@ tfoot td {
     text-align: center;
 }
  
+/* Contact Form */
+.contact-form label {
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    background-color: #1a1a2e;
+    border: 1px solid #44648a;
+    border-radius: 4px;
+    color: #e0e0e0;
+    padding: 10px 12px;
+    font-size: 1em;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input[type="text"]:hover,
+.contact-form input[type="email"]:hover,
+.contact-form textarea:hover {
+    border-color: #e94560;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #e94560;
+    box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.3);
+}
+
+.contact-form input[type="submit"] {
+    background-color: #e94560;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 24px;
+    font-size: 1em;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: #c73652;
+}
+
 /* Footer */
 body > footer {
     background-color: #0f3460;
@@ -157,4 +205,71 @@ body > footer {
     padding: 15px 20px;
     font-size: 0.85em;
     color: #a0a0a0;
+}
+
+/* ============================================
+   Responsive Design - Media Queries
+============================================ */
+
+/* Phone (min-width: 320px) */
+@media (min-width: 320px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Tablet (min-width: 768px) */
+@media (min-width: 768px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
 }
