@@ -71,6 +71,9 @@ Inputs and the submit button include hover and focus styles powered by CSS `tran
    ```
 2. Open `index.html` in any modern web browser. No build step or dependencies required.
 
+### Hosted Locally Using XAMPP
+![Hosted locally using XAMPP](hosted%20locally%20using%20XAMPP.png)
+
 ## Author
 
 **Vargha Mehregan** — Bachelor of Science in Information Technology student at ECPI University.
