@@ -4,12 +4,9 @@
    Filename: script.js
 */
 
-const userName = prompt("Welcome! What is your name?");
+var userName = prompt("Welcome! What is your name?");
 
-const welcomeMessage = document.getElementById("welcome-message");
+alert("Welcome, " + userName + "!");
 
-if (userName && userName.trim() !== "") {
-  welcomeMessage.textContent = "Welcome to My Portfolio, " + userName.trim() + "!";
-} else {
-  welcomeMessage.textContent = "Welcome to My Portfolio, Guest!";
-}
+document.getElementById("welcome-message").innerText = "Welcome to My Portfolio, " + userName + "!";
+
