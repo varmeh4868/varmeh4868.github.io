@@ -6,7 +6,12 @@
 
 var userName = prompt("Welcome! What is your name?");
 
-alert("Welcome, " + userName + "!");
+userName && userName.trim() !== ""
+  ? alert("Welcome, " + userName + "!") 
+  : alert("Welcome, Guest!") 
 
-document.getElementById("welcome-message").innerText = "Welcome to My Portfolio, " + userName + "!";
-
+userName && userName.trim() !== ""
+  ? (document.getElementById("welcome-message").innerText =
+      "Welcome to My Portfolio, " + userName.trim() + "!")
+  : (document.getElementById("welcome-message").innerText =
+      "Welcome to My Portfolio, Guest!");
