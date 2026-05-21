@@ -1,7 +1,7 @@
 /* ============================================
    varmeh4868.github.io - Portfolio Stylesheet
    Author: Vargha Mehregan
-   Date:   04/30/2026
+   Date:    05/20/2026
    Filename: styles.css
 ============================================ */
 /* Background and Font */
@@ -12,7 +12,9 @@ body {
     color: #e0e0e0;
     margin: 0;
     padding: 0;
+    transition: background 0.3s ease, color 0.3s ease;
 }
+
  
 /* Header */
 body > header {
@@ -208,6 +210,100 @@ body > footer {
 }
 
 /* ============================================
+Skills list 
+============================================ */
+#skills-list {
+    list-style-type: disc;
+    padding-left: 25px;
+    color: #c0c0c0;
+    line-height: 1.7em;
+}
+
+#skills-list li {
+    margin-bottom: 4px;
+}
+
+/* ============================================
+  Featured Content section 
+============================================ */
+.featured-card {
+    background-color: #0f3460;
+    border: 2px solid #e94560;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(233, 69, 96, 0.25);
+}
+
+.featured-card h3 {
+    color: #e94560;
+    margin-top: 0;
+}
+
+.featured-card-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    margin-bottom: 10px;
+}
+
+.featured-card-header:hover {
+    opacity: 0.85;
+}
+
+.toggle-indicator {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #e94560;
+    width: 20px;
+    text-align: center;
+}
+
+.featured-card.collapsed .featured-card-content {
+    display: none;
+}
+
+.featured-card.collapsed .featured-card-header {
+    margin-bottom: 0;
+}
+
+#university-resources {
+    border-left: 6px solid #4a90e2;
+}
+
+#personal-projects {
+    border-left: 6px solid #50c878;
+}
+
+.personal-projects-table td a {
+    display: inline-block;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.personal-projects-table td a:hover {
+    border-color: #e94560;
+    transform: scale(1.05);
+}
+
+.personal-projects-table td img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.personal-projects-table td:last-child {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* ============================================
    Responsive Design - Media Queries
 ============================================ */
 
@@ -272,4 +368,190 @@ body > footer {
         flex-direction: column;
         gap: 14px;
     }
+}
+
+/* ============================================
+   NEW: Dark Mode Toggle Switch
+============================================ */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #0f3460;
+}
+
+.theme-toggle-label {
+    color: #e0e0e0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider-track {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 26px;
+    transition: background-color 0.3s ease;
+}
+
+.slider-track::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.switch input:checked + .slider-track {
+    background-color: #e94560;
+}
+
+.switch input:checked + .slider-track::before {
+    transform: translateX(24px);
+}
+
+/* ============================================
+ Light Mode (default)
+============================================ */
+body.light-mode {
+    background: #f4f4f8;
+    color: #1a1a2e;
+}
+
+body.light-mode > header,
+body.light-mode > footer,
+body.light-mode .theme-toggle {
+    background-color: #4a90e2;
+}
+
+body.light-mode > header h1 {
+    color: #ffffff;
+}
+
+body.light-mode nav ul li a,
+body.light-mode .theme-toggle-label {
+    color: #ffffff;
+}
+
+body.light-mode section {
+    background-color: #ffffff;
+    border: 1px solid #d0d0d0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode section header h2,
+body.light-mode .featured-card h3 {
+    color: #2a5d9f;
+}
+
+body.light-mode section header {
+    border-bottom: 2px solid #2a5d9f;
+}
+
+body.light-mode section p,
+body.light-mode #skills-list {
+    color: #333333;
+}
+
+body.light-mode section a {
+    color: #2a5d9f;
+}
+
+body.light-mode .featured-card {
+    background-color: #eef4fc;
+    border: 2px solid #2a5d9f;
+    box-shadow: 0 2px 8px rgba(42, 93, 159, 0.2);
+}
+
+body.light-mode table,
+body.light-mode td,
+body.light-mode th {
+    color: #1a1a2e;
+    border-color: #b0b0b0;
+}
+
+body.light-mode thead th {
+    background-color: #2a5d9f;
+    color: #ffffff;
+}
+
+body.light-mode caption {
+    color: #1a1a2e;
+}
+
+body.light-mode tfoot td {
+    background-color: rgba(42, 93, 159, 0.1);
+    color: #1a1a2e;
+}
+
+body.light-mode col.project-name-column,
+body.light-mode col.project-url-column {
+    background-color: rgba(42, 93, 159, 0.1);
+}
+
+body.light-mode .contact-form label {
+    color: #1a1a2e;
+}
+
+body.light-mode .contact-form input[type="text"],
+body.light-mode .contact-form input[type="email"],
+body.light-mode .contact-form textarea {
+    background-color: #ffffff;
+    border: 1px solid #b0b0b0;
+    color: #1a1a2e;
+}
+
+body.light-mode .contact-form input[type="submit"] {
+    background-color: #2a5d9f;
+    color: #ffffff;
+}
+
+body.light-mode .contact-form input[type="submit"]:hover {
+    background-color: #1f4878;
+}
+
+/* ============================================
+   Dark Mode 
+============================================ */
+body.dark-mode {
+    background: #000000;
+    color: #ffffff;
+}
+
+body.dark-mode > header,
+body.dark-mode > footer,
+body.dark-mode .theme-toggle {
+    background-color: #111111;
+}
+
+body.dark-mode section {
+    background-color: #111111;
+    border: 1px solid #333333;
+}
+
+body.dark-mode .featured-card {
+    background-color: #1a1a1a;
 }
