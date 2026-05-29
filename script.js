@@ -1,6 +1,6 @@
 /*
    Author: Vargha Mehregan
-   Date:    05/20/2026
+   Date:    05/29/2026
    Filename: script.js
 */
 
@@ -18,6 +18,16 @@ userName && userName.trim() !== ""
       "Welcome to My Portfolio, " + userName.trim() + "!")
   : (document.getElementById("welcome-message").innerText =
       "Welcome to My Portfolio, Guest!");
+
+
+/* ============================================================
+   Reminder alert
+============================================================ */
+setTimeout(function () {
+  alert(
+    "Hey " + userName.trim() + "\n\nIn the meanwhile, I would like to remind you to visit the GitHub page for my projects! \n\nYou can find the link in the Featured Content section. \n\nThanks for visiting my portfolio!\n\n\n - Vargha Mehregan"
+  );
+}, 5000);
 
 /* ============================================================
    Skills loop
@@ -69,6 +79,63 @@ personalDiv
   });
 
 /* ============================================================
+   Project titles in About section ("live caption")
+============================================================ */
+const projectNameCells = document.querySelectorAll(
+  "#personal-projects table tbody tr td:first-child"
+);
+const projectNames = Array.from(projectNameCells).map(function (cell) {
+  return cell.textContent.trim();
+});
+const projectCaption = document.getElementById("project-caption");
+
+let captionIndex = 0;
+
+// Show the first name.
+projectCaption.textContent = projectNames[captionIndex];
+projectCaption.classList.add("visible");
+
+// Every three seconds: fade the current name out, swap to the next, fade it in.
+setInterval(function () {
+  projectCaption.classList.remove("visible"); // fade out
+
+  // Wait for the fade-out (0.8s) to finish before swapping the text.
+  setTimeout(function () {
+    captionIndex = (captionIndex + 1) % projectNames.length;
+    projectCaption.textContent = projectNames[captionIndex];
+    projectCaption.classList.add("visible"); // fade in
+  }, 800);
+}, 3000);
+
+/* ============================================================
+   Nav highlight  <h2>.
+============================================================ */
+const navLinks = document.querySelectorAll("nav ul li a");
+const sectionHeadings = document.querySelectorAll("main section header h2");
+const mainSections = document.querySelectorAll("main section");
+
+navLinks.forEach(function (link) {
+  link.addEventListener("click", function () {
+    // Clear the glow and border from every section first.
+    sectionHeadings.forEach(function (heading) {
+      heading.classList.remove("nav-active");
+    });
+    mainSections.forEach(function (section) {
+      section.classList.remove("section-active");
+    });
+
+    // Highlight the section this link points to: glow its <h2>
+    // and add the colored border to the section itself.
+    const targetId = link.getAttribute("href").slice(1); // drop the "#"
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      targetSection.classList.add("section-active");
+      targetSection.querySelector("header h2").classList.add("nav-active");
+    }
+  });
+});
+
+/* ============================================================
    Dark Mode toggle
 ============================================================ */
 const darkModeToggle = document.getElementById("dark-mode-toggle");
@@ -89,10 +156,31 @@ darkModeToggle.addEventListener("change", function () {
 const submitButton = document.getElementById("submit-button");
 
 submitButton.addEventListener("click", function (event) {
-  event.preventDefault();
+  event.preventDefault(); 
+
   const nameInput = document.getElementById("name");
   const formName = nameInput.value.trim();
   const welcomeName = userName && userName.trim() ? userName.trim() : "";
   const enteredName = formName || welcomeName || "Guest";
-  alert("Thank you, " + enteredName + ", your message has been sent!");
+
+  //Sending message...
+  let formStatus = document.getElementById("form-status");
+  if (!formStatus) {
+    formStatus = document.createElement("p");
+    formStatus.id = "form-status";
+    submitButton.insertAdjacentElement("afterend", formStatus);
+  }
+
+  // Show the loading message right away and block repeat clicks.
+  formStatus.textContent = "Sending message...";
+  formStatus.className = "form-status sending";
+  submitButton.disabled = true;
+
+  // After 2.5 seconds, replace the loading message with the confirmation.
+  setTimeout(function () {
+    formStatus.textContent =
+      "Message sent successfully! Thank you, " + enteredName + ".";
+    formStatus.className = "form-status sent";
+    submitButton.disabled = false;
+  }, 2500);
 });

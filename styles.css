@@ -87,7 +87,38 @@ section header h2 {
     color: #e94560;
     margin: 0;
 }
- 
+
+/*Active nav highlight: glows the clicked section's <h2>. */
+body.dark-mode section header h2.nav-active {
+    text-shadow: 0 0 8px #16e0c29a, 0 0 18px #16e0c236;
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+body.light-mode section header h2.nav-active {
+    text-shadow: 0 0 8px #e0a236, 0 0 18px #e0a2365b;
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+/*Border on the active section */
+body.dark-mode section.section-active {
+    border: 2px solid #ff8c00;
+    animation: fadeBorder 3s forwards;
+}
+
+body.light-mode section.section-active {
+    border: 2px solid #e63946;
+    animation: fadeBorder 3s forwards;
+}
+
+@keyframes fadeBorder {
+  from {
+    border-color: #ff8c00;
+  }
+
+  to {
+    border-color: transparent;
+  }
+}
 section p {
     line-height: 1.7em;
     color: #c0c0c0;
@@ -200,6 +231,31 @@ tfoot td {
     background-color: #c73652;
 }
 
+/*NEW
+   Contact form status message. JavaScript adds the .sending class
+   while the message is "sending", then swaps to .sent on success. */
+.form-status {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.form-status.sending {
+    color: #ffb347; /* amber while sending */
+}
+
+.form-status.sent {
+    color: #50c878; /* green on success */
+}
+
+body.light-mode .form-status.sending {
+    color: #c77800;
+}
+
+body.light-mode .form-status.sent {
+    color: #2e8b57;
+}
+
 /* Footer */
 body > footer {
     background-color: #0f3460;
@@ -223,8 +279,30 @@ Skills list
     margin-bottom: 4px;
 }
 
+/*=============================================
+   Project titles in About section ("live caption")
+   ============================================ */
+.project-title-item {
+    margin: 6px 0;
+    min-height: 1.4em;
+    color: #c0c0c0;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.project-title-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.light-mode .project-title-item {
+    color: #333333;
+}
+
 /* ============================================
-  Featured Content section 
+  Featured Content section
 ============================================ */
 .featured-card {
     background-color: #0f3460;
@@ -371,7 +449,7 @@ Skills list
 }
 
 /* ============================================
-   NEW: Dark Mode Toggle Switch
+  Dark Mode Toggle Switch
 ============================================ */
 .theme-toggle {
     display: flex;
