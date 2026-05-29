@@ -231,9 +231,7 @@ tfoot td {
     background-color: #c73652;
 }
 
-/*NEW
-   Contact form status message. JavaScript adds the .sending class
-   while the message is "sending", then swaps to .sent on success. */
+/*Contact form status message. . */
 .form-status {
     margin-top: 12px;
     font-weight: bold;
