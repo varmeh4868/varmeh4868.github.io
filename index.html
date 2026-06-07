@@ -3,7 +3,7 @@
   <head>
     <!--
    Author: Vargha Mehregan
-   Date:   05/29/2026
+   Date:   06/07/2026
    Filename: index.html
    -->
     <meta charset="UTF-8" />
@@ -20,6 +20,12 @@
   </head>
 
   <body class="light-mode">
+    <div id="welcome-modal" class="modal-overlay">
+      <div class="modal-box">
+        <p>This page is a work in progress.</p>
+        <button id="close-modal" type="button">Close</button>
+      </div>
+    </div>
 
     <div class="theme-toggle">
       <label class="switch" for="dark-mode-toggle">
@@ -247,7 +253,12 @@
             placeholder="Your message"
           ></textarea>
 
-          <input type="submit" id="submit-button" value="Send Message" />
+          <input
+            type="submit"
+            id="submit-button"
+            value="Send Message"
+            title="Click to send your message!"
+          />
         </form>
       </section>
     </main>

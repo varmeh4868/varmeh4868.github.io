@@ -1,23 +1,18 @@
 /*
    Author: Vargha Mehregan
-   Date:    05/29/2026
+   Date:    06/07/2026
    Filename: script.js
 */
 
 /* ============================================================
-   Welcome message
+   Welcome modal (close button)
 ============================================================ */
-var userName = prompt("Welcome! What is your name?");
+const welcomeModal = document.getElementById("welcome-modal");
+const closeModalBtn = document.getElementById("close-modal");
 
-userName && userName.trim() !== ""
-  ? alert("Welcome, " + userName + "!")
-  : alert("Welcome, Guest!");
-
-userName && userName.trim() !== ""
-  ? (document.getElementById("welcome-message").innerText =
-      "Welcome to My Portfolio, " + userName.trim() + "!")
-  : (document.getElementById("welcome-message").innerText =
-      "Welcome to My Portfolio, Guest!");
+closeModalBtn.addEventListener("click", function () {
+  welcomeModal.classList.add("hidden");
+});
 
 
 /* ============================================================
@@ -25,7 +20,7 @@ userName && userName.trim() !== ""
 ============================================================ */
 setTimeout(function () {
   alert(
-    "Hey " + userName.trim() + "\n\nIn the meanwhile, I would like to remind you to visit the GitHub page for my projects! \n\nYou can find the link in the Featured Content section. \n\nThanks for visiting my portfolio!\n\n\n - Vargha Mehregan"
+    "Hey there!\n\nIn the meanwhile, I would like to remind you to visit the GitHub page for my projects! \n\nYou can find the link in the Featured Content section. \n\nThanks for visiting my portfolio!\n\n\n - Vargha Mehregan"
   );
 }, 5000);
 
@@ -136,17 +131,26 @@ navLinks.forEach(function (link) {
 });
 
 /* ============================================================
-   Dark Mode toggle
+   Dark Mode toggle (preference saved in localStorage)
 ============================================================ */
 const darkModeToggle = document.getElementById("dark-mode-toggle");
+
+// On load: apply the stored preference and sync the toggle.
+if (localStorage.getItem("darkMode") === "true") {
+  document.body.classList.remove("light-mode");
+  document.body.classList.add("dark-mode");
+  darkModeToggle.checked = true;
+}
 
 darkModeToggle.addEventListener("change", function () {
   if (darkModeToggle.checked) {
     document.body.classList.remove("light-mode");
     document.body.classList.add("dark-mode");
+    localStorage.setItem("darkMode", "true");
   } else {
     document.body.classList.remove("dark-mode");
     document.body.classList.add("light-mode");
+    localStorage.setItem("darkMode", "false");
   }
 });
 
@@ -156,12 +160,11 @@ darkModeToggle.addEventListener("change", function () {
 const submitButton = document.getElementById("submit-button");
 
 submitButton.addEventListener("click", function (event) {
-  event.preventDefault(); 
+  event.preventDefault();
 
   const nameInput = document.getElementById("name");
   const formName = nameInput.value.trim();
-  const welcomeName = userName && userName.trim() ? userName.trim() : "";
-  const enteredName = formName || welcomeName || "Guest";
+  const enteredName = formName || "Guest";
 
   //Sending message...
   let formStatus = document.getElementById("form-status");
