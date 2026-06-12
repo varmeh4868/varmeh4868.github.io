@@ -187,3 +187,78 @@ submitButton.addEventListener("click", function (event) {
     submitButton.disabled = false;
   }, 2500);
 });
+
+/* ============================================================
+    project objects
+============================================================ */
+const portfolioProjects = [
+  {
+    title: "RSVP Application (.NET MAUI)",
+    summary:
+      "Cross-platform mobile RSVP and event-management app with login, event lists, and RSVP tracking.",
+    image: "RSVP.png",
+    repo: "https://github.com/varmeh4868/RSVP_Application_Project_MAUI_.NET",
+  },
+  {
+    title: "Console Bank Account Management System",
+    summary:
+      "Java console app for managing users and bank accounts with OOP design, CRUD operations, and SQLite storage.",
+    image: "Bank.jpg",
+    repo: "https://github.com/varmeh4868/Console_Bank_Account_Management_System",
+  },
+  {
+    title: "Console Calculator",
+    summary:
+      "Lightweight Java console calculator with input validation and a simple menu-driven interface.",
+    image: "Calculator.png",
+    repo: "https://github.com/varmeh4868/ConsoleCalculator",
+  },
+  {
+    title: ".NET MAUI RESTful Web API Authentication Storage",
+    summary:
+      ".NET MAUI client that consumes a secured REST API with token handling and local storage.",
+    image: "api-settings.jpg",
+    repo: "https://github.com/varmeh4868/.NET_MAUI_RESTful_Web_API_Authentication_Storage",
+  },
+];
+ /* ============================================================
+   store the array in session storage 
+============================================================ */
+let activeProjects;
+if (sessionStorage.getItem("portfolioProjects") === null) {
+  sessionStorage.setItem("portfolioProjects", JSON.stringify(portfolioProjects));
+  activeProjects = portfolioProjects;
+} else {
+  activeProjects = JSON.parse(sessionStorage.getItem("portfolioProjects"));
+}
+ /* ============================================================
+    Select the project container and build a card for each project
+============================================================ */
+const dynamicProjects = document.getElementById("dynamic-projects");
+ 
+activeProjects.forEach(function (project) {
+  const card = document.createElement("div");
+  card.className = "dynamic-project";
+ 
+  const title = document.createElement("h4");
+  title.textContent = project.title;
+ 
+  const image = document.createElement("img");
+  image.src = project.image;
+  image.alt = project.title;
+ 
+  const summary = document.createElement("p");
+  summary.textContent = project.summary;
+ 
+  const link = document.createElement("a");
+  link.href = project.repo;
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.textContent = "View Repository";
+ 
+  card.appendChild(title);
+  card.appendChild(image);
+  card.appendChild(summary);
+  card.appendChild(link);
+  dynamicProjects.appendChild(card);
+});
