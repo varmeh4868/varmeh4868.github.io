@@ -107,4 +107,4 @@ On submit, JavaScript prevents the page reload, shows a "Sending..." status, dis
 
 ## Course
 
-Developed as coursework for **SDC260: Web Development**.
+Developed as coursework for **SDC260: Web Development** and **202605E RALE SDC355 NMW Javascript**.
